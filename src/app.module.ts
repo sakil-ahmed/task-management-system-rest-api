@@ -3,7 +3,8 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { MongooseModule } from "@nestjs/mongoose";
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from "./auth/auth.module";
+
 
 
 @Module({
@@ -11,11 +12,11 @@ import { AuthModule } from './auth/auth.module';
     ConfigModule.forRoot({ isGlobal: true, envFilePath: ".env" }),
     MongooseModule.forRootAsync({
       useFactory: (config: ConfigService) => ({
-        uri: config.getOrThrow("MONGO_DB_URI")
+        uri: config.getOrThrow<string>("MONGO_DB_URI")
       }),
       inject: [ConfigService]
     }),
-    AuthModule
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService]
