@@ -1,9 +1,10 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from "mongoose";
+import mongoose, { Document } from "mongoose";
+import { Workspace } from "../../workspace/schemas/workspace.schema";
 
 @Schema({
   timestamps: true,
-  versionKey: false,
+  versionKey: false
 })
 export class User extends Document {
   @Prop()
@@ -14,6 +15,9 @@ export class User extends Document {
   readonly password: string;
   @Prop()
   readonly shortBio: string;
+
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Workspace" }] })
+  readonly workspace: Workspace[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
