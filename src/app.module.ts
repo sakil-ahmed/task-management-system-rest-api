@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { MongooseModule } from "@nestjs/mongoose";
 import { AuthModule } from "./auth/auth.module";
 import { WorkspaceModule } from './workspace/workspace.module';
+import { TaskModule } from './task/task.module';
 
 
 
@@ -19,6 +20,7 @@ import { WorkspaceModule } from './workspace/workspace.module';
     }),
     AuthModule,
     WorkspaceModule,
+    TaskModule,
   ],
   controllers: [AppController],
   providers: [AppService]
