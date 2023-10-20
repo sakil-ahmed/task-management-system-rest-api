@@ -13,8 +13,8 @@ export class Workspace extends Document {
   @Prop()
   readonly description: string;
 
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }] })
-  readonly author: User[];
+  @Prop()
+  readonly author: string;
 }
 
 

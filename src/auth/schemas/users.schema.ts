@@ -16,8 +16,8 @@ export class User extends Document {
   @Prop()
   readonly shortBio: string;
 
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Workspace" }] })
-  readonly workspace: Workspace[];
+  // @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Workspace" }] })
+  // readonly workspace: Workspace[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
